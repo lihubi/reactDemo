@@ -1,0 +1,12 @@
+.homebar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img{
+        width: 1.5rem;
+    }
+    .name{
+        text-align: center;
+        color: red;
+    }
+}
