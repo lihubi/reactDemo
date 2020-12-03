@@ -1,7 +1,9 @@
 .homebar{
+    width: 95%;
+    margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     img{
         width: 1.5rem;
     }

@@ -16,7 +16,7 @@ export default class HomeBar extends Component{
                         return(
                             <div key={i}>
                                 <img src={item.image_src} alt=""/>
-                                <div className="name">{item.name}</div>
+                                {/* <div className="name">{item.name}</div> */}
                             </div>
                         )
                     })

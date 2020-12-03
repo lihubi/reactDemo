@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import FootNav from "../../components/footNav"
 import Request from "../../utils/api"
+import { connect } from 'react-redux'
 
 import Swiper from "../../components/swiper"
 import HomeHeader from "./homeHeader"
@@ -8,7 +9,7 @@ import HomeBar from "./homeBar"
 
 
 
-export default class Home extends Component{
+ class Home extends Component{
     constructor(){
         super();
         this.state = {
@@ -18,10 +19,10 @@ export default class Home extends Component{
     render(){
         return(
             <div>
-                <HomeHeader></HomeHeader>
+                <HomeHeader city={this.props.city.cityName}></HomeHeader>
                 <Swiper banners={this.state.Swipers}></Swiper>
                 <HomeBar></HomeBar>
-                Home
+                
                 <FootNav></FootNav>
             </div>
         )
@@ -32,3 +33,13 @@ export default class Home extends Component{
         this.setState({Swipers})
     }
 }
+
+function mapStateToProps(state){
+    return{
+        city:state.city
+    }
+}
+
+export default connect(
+    mapStateToProps
+)(Home)
