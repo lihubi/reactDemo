@@ -18,7 +18,14 @@ export default class PublicHeader extends Component{
                     leftContent={
                         <Icon onClick={this.back} key="0" type="left" style={{ marginRight: '16px' }} />
                     }
-                >{this.props.title}</NavBar>
+                >
+                  <div style={{
+                  whiteSpace: 'nowrap',
+                  overflow:'hidden',
+                  maxWidth:'13em',
+                  textOverflow:'ellipsis',
+                  }}>{this.props.title}</div>
+                </NavBar>
             </div>
         )
     }

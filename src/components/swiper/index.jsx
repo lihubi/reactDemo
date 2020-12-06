@@ -21,17 +21,18 @@ const styles = {
 export default class Swiper extends Component{
     render(){
         const banners = this.props.banners;
+        const name = this.props.name;
         return(
             <div className="swiper">
                  <SwipeableViews >
-                    {banners.map((item,i)=>{
+                    {banners?banners.map((item,i)=>{
                         return(
                         <div className="swiper-items" key={i}>
-                            <img src={item.image_src} alt=""/>
+                            <img src={item[name]} alt=""/>
                         </div>
                         )
-                    })}
-                </SwipeableViews> 
+                    }):''}
+                </SwipeableViews>
             </div>
         )
     }

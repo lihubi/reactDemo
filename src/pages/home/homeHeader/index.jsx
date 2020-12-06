@@ -23,7 +23,9 @@ export default class HomeHeader extends Component{
                         </NavLink>
                     }
                     rightContent={[
-                        <Icon key="0" type="search" style={{ marginRight: '16px' }} />
+                        <NavLink exact to="/search">
+                            <Icon key="0" type="search" style={{ marginRight: '16px' }} />
+                        </NavLink>
                     ]}
                 >首页</NavBar>
             </div>
