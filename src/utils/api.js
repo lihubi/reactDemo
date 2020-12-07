@@ -12,8 +12,9 @@ export default {
         return res;
     },
     //搜索页面搜索
-    async search(query){
-        let res = await ajax.get(base.Search,{params:{query}});
+    async search(datas){
+        console.log(datas);
+        let res = await ajax.get(base.Search,{params:datas});
         return res;
     },
     //详情页面

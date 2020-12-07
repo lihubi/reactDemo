@@ -20,7 +20,7 @@ export default class AppRouter extends Component {
             <HashRouter>
                 <App pagh='/'>
                     <CacheSwitch>
-                        <Route exact path="/" component={Home}></Route>
+                        <CacheRoute exact path="/" component={Home}></CacheRoute>
                         <Route exact path="/life" component={Life}></Route>
                         <Route exact path="/my" component={My}></Route>
                         <Route exact path="/shop" component={Shop}></Route>

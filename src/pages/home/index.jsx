@@ -6,8 +6,7 @@ import { connect } from 'react-redux'
 import Swiper from "../../components/swiper"
 import HomeHeader from "./homeHeader"
 import HomeBar from "./homeBar"
-import ListBox from "../../components/listbox/listbox"
-
+import Listcontain from '../../components/listbox/listcontain'
 
  class Home extends Component{
     constructor(){
@@ -23,15 +22,9 @@ import ListBox from "../../components/listbox/listbox"
                 <HomeHeader city={this.props.city.cityName}></HomeHeader>
                 <Swiper banners={this.state.Swipers} name="image_src"></Swiper>
                 <HomeBar></HomeBar>
-                 <div className="listbox" style={{marginTop:'10px',marginBottom:'50px'}}>
-                                    {
-                                        this.state.List.map((item, i) => {
-                                            return (
-                                                <ListBox key={i} item={item}></ListBox>
-                                            )
-                                        })
-                                    }
-                                </div>
+                <div style={{marginBottom:'56px'}}>
+                    <Listcontain isSearch={true} onRef={this.onRef}/>
+                </div>
                 <FootNav></FootNav>
             </div>
         )
@@ -42,12 +35,6 @@ import ListBox from "../../components/listbox/listbox"
         console.log(Swipers)
         this.setState({Swipers})
 
-         //获取商品数据
-         let List = await Request.search();
-         this.setState({
-             List: List.goods
-         })
-
         //触底
         window.addEventListener("scroll",this.handle)
     }
@@ -57,13 +44,19 @@ import ListBox from "../../components/listbox/listbox"
         window.removeEventListener('scroll', this.handle);
 
       }
+       onRef = (ref) => {
+           this.child = ref
+       }
 
     handle = ()=>{
          let onPullUpHeight=this.refs.onPullUp.clientHeight; //数据的高
          let documentHeight=document.documentElement.clientHeight; //屏幕的高
          let documentTop=document.documentElement.scrollTop;  //滚动的高
-         if(onPullUpHeight>documentHeight&&Math.floor(onPullUpHeight)===Math.floor(documentHeight+documentTop-50)){
-            console.log('到底')
+         let isbtm = Math.floor(onPullUpHeight-(documentHeight+documentTop-56))<=0;
+         if(onPullUpHeight>documentHeight&&isbtm){
+            //滚动到底部，再次加载
+            console.log('加载')
+            this.child.getmsg();
          }
     }
 }
